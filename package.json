@@ -1,0 +1,29 @@
+{
+	"name": "quiet-racoon-training",
+	"version": "0.0.1",
+	"description": "Training Raccoons... Quietly",
+	"keywords": [
+		"quiet",
+		"racoon",
+		"training"
+	],
+	
+	"homepage": "http://github.com/lewismoten/quiet-racoon-training",
+	"bugs": "https://github.com/lewismoten/quiet-racoon-training/issues",
+
+	"license": "UNLICENSED",
+	"private": true,
+
+	"author": {
+		"name": "Lewis Moten",
+		"url": "http://github.com/lewismoten"
+	},
+
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/lewismoten/quiet-racoon-training.git"
+	},
+
+	"devDependencies": {
+	}
+}
