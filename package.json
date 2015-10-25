@@ -28,6 +28,7 @@
 		"bower": "*",
 		"gulp": "*",
 		"gulp-uglify": "*",
-		"gulp-concat": "*"
+		"gulp-concat": "*",
+		"gulp-jshint": "*"
 	}
 }
