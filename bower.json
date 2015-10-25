@@ -1,0 +1,16 @@
+{
+	"name": "quiet-raccoon-training",
+	"version": "1.0.0",
+	"description": "Training Raccoons... Quietly",
+	"license": "UNLICENSED",
+	"authors": [
+		"Lewis Moten"
+	],
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components"
+	],
+	"dependencies": {
+	}
+}
