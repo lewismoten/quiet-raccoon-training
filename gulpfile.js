@@ -1,7 +1,8 @@
 (function gulpFile(require, console){
 
 	var gulp = require('gulp'),
-		minify = require('gulp-minify');
+		uglify = require('gulp-uglify'),
+		concat = require('gulp-concat');
 
 	gulp.task('default', function() {
 
@@ -18,8 +19,10 @@
 
 		gulp.src('lib/*.js')
 
-			.pipe(minify(options))
+			.pipe(uglify())
 
+			.pipe(concat('quiet-raccoon-training.min.js'))
+			
 			.pipe(gulp.dest('dist'));
 
 	});

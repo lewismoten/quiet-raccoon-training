@@ -27,6 +27,7 @@
 	"devDependencies": {
 		"bower": "*",
 		"gulp": "*",
-		"gulp-minify": "*"
+		"gulp-uglify": "*",
+		"gulp-concat": "*"
 	}
 }
