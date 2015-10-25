@@ -29,6 +29,7 @@
 		"gulp": "*",
 		"gulp-uglify": "*",
 		"gulp-concat": "*",
-		"gulp-jshint": "*"
+		"gulp-jshint": "*",
+		"gulp-webserver": "*"
 	}
 }

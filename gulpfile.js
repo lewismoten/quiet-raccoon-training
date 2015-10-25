@@ -3,13 +3,31 @@
 	var gulp = require('gulp'),
 		uglify = require('gulp-uglify'),
 		concat = require('gulp-concat'),
-		jshint = require('gulp-jshint');
+		jshint = require('gulp-jshint'),
+		webserver = require('gulp-webserver');
 
 	gulp.task('default', function() {
 
 		console.log('This is the default task...');
 
 	});
+
+
+	gulp.task('webserver', function() {
+		
+		gulp.src('app')
+
+			.pipe(webserver({
+
+				directoryListing: {
+					enable: true,
+					path: 'app',
+					options: undefined
+				}
+
+			}));
+	});
+
 
 	gulp.task('jshint', function(){
 
