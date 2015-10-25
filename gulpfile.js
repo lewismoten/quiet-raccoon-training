@@ -1,5 +1,7 @@
 (function gulpFile(require, console){
 
+	'use strict';
+
 	var gulp = require('gulp'),
 		uglify = require('gulp-uglify'),
 		concat = require('gulp-concat'),
@@ -14,14 +16,16 @@
 
 
 	gulp.task('webserver', function() {
-		
-		gulp.src('app')
+
+		var root = "src/web";
+
+		gulp.src(root)
 
 			.pipe(webserver({
 
 				directoryListing: {
 					enable: true,
-					path: 'app',
+					path: root,
 					options: undefined
 				}
 
@@ -67,7 +71,7 @@
 
 	gulp.task('compress', function() {
 
-		gulp.src('lib/*.js')
+		gulp.src('src/*.js')
 
 			.pipe(uglify())
 
