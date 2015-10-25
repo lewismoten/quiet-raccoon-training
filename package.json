@@ -26,6 +26,7 @@
 
 	"devDependencies": {
 		"bower": "*",
-		"gulp": "*"
+		"gulp": "*",
+		"gulp-minify": "*"
 	}
 }
