@@ -6,36 +6,70 @@
 		uglify = require('gulp-uglify'),
 		concat = require('gulp-concat'),
 		jshint = require('gulp-jshint'),
-		webserver = require('gulp-webserver');
+		webserver = require('gulp-webserver'),
+		htmlmin = require('gulp-html-minifier'),
 
-	gulp.task('default', function() {
+		tasks = [
+			['default', showTaskList],
+			['host', runWebServer],
+			['qa', checkCodeQuality],
+			['build', ['buildJs', 'buildHtml'], build],
+			['buildJs', compressJavaScript],
+			['buildHtml', compressHtml]
+		];
 
-		console.log('This is the default task...');
+	tasks.map(registerTask);
 
-	});
+ 	function showTaskList() {
 
+		console.log('\nAvailable tasks:\n');
 
-	gulp.task('webserver', function() {
+		tasks.map(displayTask);
 
-		var root = "src/web";
+		console.log();
+	}
 
-		gulp.src(root)
+	function registerTask(task) {
+		gulp.task.apply(gulp, task)
+	}
 
-			.pipe(webserver({
+	function displayTask(task, index) {
+		console.log('\t%s. %s', index + 1, task[0]);
+	}
 
-				directoryListing: {
-					enable: true,
-					path: root,
-					options: undefined
-				}
+	function build() {
 
-			}));
-	});
+	}
 
+	function compressHtml() {
 
-	gulp.task('jshint', function(){
+		var options = {
+			collapseWhitespace: true,
+			ignorePath: '/web',
+			removeComments: true
+		};
 
-		gulp.src('lib/*.js')
+		gulp.src('./src/**/*.html')
+
+			.pipe(htmlmin(options))
+
+			.pipe(gulp.dest('./dist'));
+	}
+
+	function compressJavaScript() {
+
+		gulp.src('./src/lib/*.js')
+
+			.pipe(uglify())
+
+			.pipe(concat('quiet-raccoon-training.min.js'))
+			
+			.pipe(gulp.dest('./dist'));
+	}
+
+	function checkCodeQuality(){
+
+		gulp.src('./src/**/*.js')
 
 			.pipe(jshint({
 				"eqnull": true,
@@ -65,20 +99,30 @@
 				]
 			}))
 
-			.pipe(jshint.reporter('default'))
+			.pipe(jshint.reporter('default'));
 
-	});
+	}
 
-	gulp.task('compress', function() {
+	function runWebServer() {
 
-		gulp.src('src/*.js')
+		var root = ".",
 
-			.pipe(uglify())
+			options = {
 
-			.pipe(concat('quiet-raccoon-training.min.js'))
+				directoryListing: {
+
+					enable: true,
+					path: root,
+					options: undefined
+
+				}
 			
-			.pipe(gulp.dest('dist'));
+			};
 
-	});
+		gulp.src(root)
+
+			.pipe(webserver(options));
+	}
+
 
 })(require, console);

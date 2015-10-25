@@ -30,6 +30,7 @@
 		"gulp-uglify": "*",
 		"gulp-concat": "*",
 		"gulp-jshint": "*",
-		"gulp-webserver": "*"
+		"gulp-webserver": "*",
+		"gulp-html-minifier": "*"
 	}
 }
