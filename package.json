@@ -31,6 +31,7 @@
 		"gulp-concat": "*",
 		"gulp-jshint": "*",
 		"gulp-webserver": "*",
-		"gulp-html-minifier": "*"
+		"gulp-html-minifier": "*",
+		"gulp-html-replace": "*"
 	}
 }

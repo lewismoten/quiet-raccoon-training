@@ -8,6 +8,7 @@
 		jshint = require('gulp-jshint'),
 		webserver = require('gulp-webserver'),
 		htmlmin = require('gulp-html-minifier'),
+		htmlreplace = require('gulp-html-replace'),
 
 		tasks = [
 			['default', showTaskList],
@@ -15,7 +16,7 @@
 			['qa', checkCodeQuality],
 			['build', ['buildJs', 'buildHtml'], build],
 			['buildJs', compressJavaScript],
-			['buildHtml', compressHtml]
+			['buildHtml', ['buildJs'], compressHtml]
 		];
 
 	tasks.map(registerTask);
@@ -51,6 +52,10 @@
 
 		gulp.src('./src/**/*.html')
 
+			.pipe(htmlreplace({
+				'js': 'quiet-raccoon-training.min.js'
+			}))
+
 			.pipe(htmlmin(options))
 
 			.pipe(gulp.dest('./dist'));
@@ -58,7 +63,7 @@
 
 	function compressJavaScript() {
 
-		gulp.src('./src/lib/*.js')
+		gulp.src('./src/**/*.js')
 
 			.pipe(uglify())
 
