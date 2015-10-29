@@ -1,6 +1,6 @@
 {
 	"name": "quiet-racoon-training",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Training Raccoons... Quietly",
 	"keywords": [
 		"quiet",
@@ -29,6 +29,7 @@
 		"gulp-html-minifier": "*",
 		"gulp-html-replace": "*",
 		"gulp-bump": "*",
-		"gulp-git": "*"
+		"gulp-git": "*",
+		"gulp-filter": "*"
 	}
 }
