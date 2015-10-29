@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - 4.2.1
+install:
+  - unzip node_modules.zip
+  - npm install
 before_script:
   - npm install -g gulp
 script: gulp test

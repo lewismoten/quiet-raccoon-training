@@ -104,6 +104,7 @@
 		filter = require('gulp-filter'),
 		tagVersion = require('gulp-tag-version'),
 		jasmine = require('gulp-jasmine'),
+		zip = require('gulp-zip'),
 
 		javaScriptFiles = ['./src/**/*.js', '!**/*-spec.js'];
 
@@ -127,6 +128,15 @@
 		gulp.task('feature', ['build'], bumpVersion.bind(null, 'minor'));
 		gulp.task('alpha', ['build'], bumpVersion.bind(null, 'prerelease'));
 		gulp.task('release', ['build'], bumpVersion.bind(null, 'major'));
+
+		gulp.task('zip', zipModules);
+
+	}
+
+	function zipModules() {
+		gulp.src('node_modules/**/*')
+			.pipe(zip('node_modules.zip'))
+			.pipe(gulp.dest('./'));
 
 	}
 
