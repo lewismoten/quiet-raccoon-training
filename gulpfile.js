@@ -99,7 +99,10 @@
 		webserver = require('gulp-webserver'),
 		htmlMinifier = require('gulp-html-minifier'),
 		htmlReplace = require('gulp-html-replace'),
-		bump = require('gulp-bump');
+		bump = require('gulp-bump'),
+		git = require('gulp-git'),
+		filter = require('gulp-filter'),
+		tagVersion = require('gulp-tag-version');
 
 	registerTasks(gulp);
 
@@ -114,9 +117,9 @@
 		gulp.task('buildJs', compressJavaScript);
 		gulp.task('buildHtml', ['buildJs'], compressHtml);
 
-		gulp.task('patch', bumpVersion.bind(null, 'patch'));
-		gulp.task('feature', bumpVersion.bind(null, 'minor'));
-		gulp.task('release', bumpVersion.bind(null, 'major'));
+		gulp.task('patch', ['build'], bumpVersion.bind(null, 'patch'));
+		gulp.task('feature', ['build'], bumpVersion.bind(null, 'minor'));
+		gulp.task('release', ['build'], bumpVersion.bind(null, 'major'));
 
 	}
 
@@ -125,7 +128,10 @@
 
 		gulp.src(['./package.json', './bower.json'])
 			.pipe(bump(options))
-			.pipe(gulp.dest('./'));
+			.pipe(gulp.dest('./'))
+			.pipe(git.commit('bumps version for ' + type, {args: '--quiet'}))
+			.pipe(filter('package.json'))
+			.pipe(tagVersion());
 
 	}
 
