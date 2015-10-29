@@ -1,7 +1,15 @@
-(function displaySignature(console){
+var module;
+
+(function displaySignature(module, console){
 
 	'use strict';
 
-	console.log('version 1.0');
+	var version = '1.0';
 
-})(console);
+	console.log(version);
+
+	if(module.exports) {
+		module.exports = version;
+	}
+
+}).call(this, module || {}, console);
