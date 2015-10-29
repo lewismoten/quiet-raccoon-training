@@ -119,12 +119,17 @@
 
 		gulp.task('patch', ['build'], bumpVersion.bind(null, 'patch'));
 		gulp.task('feature', ['build'], bumpVersion.bind(null, 'minor'));
+		gulp.task('alpha', ['build'], bumpVersion.bind(null, 'prerelease'));
 		gulp.task('release', ['build'], bumpVersion.bind(null, 'major'));
 
 	}
 
 	function bumpVersion(type) {
 		var options = {type: type};
+
+		if(type === 'prerelease') {
+			options.preid = 'alpha';
+		}
 
 		gulp.src(['./package.json', './bower.json'])
 			.pipe(bump(options))
