@@ -168,35 +168,12 @@
 
 	function checkCodeQuality(){
 
+		var packageJson = require('./package'),
+			jshintConfig = packageJson
+
 		gulp.src('./src/**/*.js')
 
-			.pipe(jshint({
-				"eqnull": true,
-				"curly": true,
-				"eqeqeq": true,
-				"es3": true,
-				"forin": true,
-				"freeze": true,
-				"futurehostile": true,
-				"latedef": true,
-				"maxcomplexity": 20,
-				"maxdepth": 5,
-				"maxerr": 20,
-				"maxparams": 7,
-				"maxstatements": 10,
-				"noarg": true,
-				"nocomma": true,
-				"nonbsp": true,
-				"nonew": true,
-				"shadow": true,
-				"singleGroups": true,
-				"strict": true,
-				"undef": true,
-				"unused": true,
-				"predef": [
-					"console"
-				]
-			}))
+			.pipe(jshint({lookup: true}))
 
 			.pipe(jshint.reporter('default'));
 
