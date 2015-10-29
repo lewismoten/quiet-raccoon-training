@@ -7,23 +7,18 @@
 		"racoon",
 		"training"
 	],
-	
 	"homepage": "http://github.com/lewismoten/quiet-racoon-training",
 	"bugs": "https://github.com/lewismoten/quiet-racoon-training/issues",
-
 	"license": "UNLICENSED",
 	"private": true,
-
 	"author": {
 		"name": "Lewis Moten",
 		"url": "http://github.com/lewismoten"
 	},
-
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/lewismoten/quiet-racoon-training.git"
 	},
-
 	"devDependencies": {
 		"bower": "*",
 		"gulp": "*",
@@ -32,6 +27,8 @@
 		"gulp-jshint": "*",
 		"gulp-webserver": "*",
 		"gulp-html-minifier": "*",
-		"gulp-html-replace": "*"
+		"gulp-html-replace": "*",
+		"gulp-bump": "*",
+		"gulp-git": "*"
 	}
 }
