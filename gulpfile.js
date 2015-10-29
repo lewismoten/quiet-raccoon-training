@@ -8,38 +8,42 @@
 		jshint = require('gulp-jshint'),
 		webserver = require('gulp-webserver'),
 		htmlmin = require('gulp-html-minifier'),
-		htmlreplace = require('gulp-html-replace'),
+		htmlreplace = require('gulp-html-replace');
 
-		tasks = [
-			['default', showTaskList],
-			['host', runWebServer],
-			['qa', checkCodeQuality],
-			['build', ['buildJs', 'buildHtml'], build],
-			['buildJs', compressJavaScript],
-			['buildHtml', ['buildJs'], compressHtml]
-		];
+	registerTasks(gulp);
 
-	tasks.map(registerTask);
+	return;
 
- 	function showTaskList() {
+	function registerTasks() {
+
+		gulp.task('default', defaultTask);
+		gulp.task('host', runWebServer);
+		gulp.task('qa', checkCodeQuality);
+		gulp.task('build', ['buildJs', 'buildHtml'], build);
+		gulp.task('buildJs', compressJavaScript);
+		gulp.task('buildHtml', ['buildJs'], compressHtml);
+
+	}
+
+ 	function defaultTask() {
 
 		console.log('\nAvailable tasks:\n');
 
-		tasks.map(displayTask);
+		Object.keys(gulp.tasks).map(displayTask);
 
 		console.log();
 	}
 
-	function registerTask(task) {
-		gulp.task.apply(gulp, task)
-	}
-
-	function displayTask(task, index) {
-		console.log('\t%s. %s', index + 1, task[0]);
+	function registerTask(task, index) {
+		gulp.task.apply(gulp, task);
 	}
 
 	function build() {
 
+	}
+
+	function displayTask(name, index) {
+		console.log('\t%s. %s', index + 1, name);
 	}
 
 	function compressHtml() {
