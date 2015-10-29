@@ -97,8 +97,9 @@
 		concat = require('gulp-concat'),
 		jshint = require('gulp-jshint'),
 		webserver = require('gulp-webserver'),
-		htmlmin = require('gulp-html-minifier'),
-		htmlreplace = require('gulp-html-replace');
+		htmlMinifier = require('gulp-html-minifier'),
+		htmlReplace = require('gulp-html-replace'),
+		bump = require('gulp-bump');
 
 	registerTasks(gulp);
 
@@ -113,6 +114,19 @@
 		gulp.task('buildJs', compressJavaScript);
 		gulp.task('buildHtml', ['buildJs'], compressHtml);
 
+		gulp.task('patch', bumpVersion.bind(null, 'patch'));
+		gulp.task('feature', bumpVersion.bind(null, 'minor'));
+		gulp.task('release', bumpVersion.bind(null, 'major'));
+
+	}
+
+	function bumpVersion(type) {
+		var options = {type: type};
+
+		gulp.src(['./package.json', './bower.json'])
+			.pipe(bump(options))
+			.pipe(gulp.dest('./'));
+
 	}
 
  	function defaultTask() {
@@ -123,7 +137,7 @@
 
 		console.log();
 	}
-	
+
 	function build() {
 
 	}
@@ -142,11 +156,11 @@
 
 		gulp.src('./src/**/*.html')
 
-			.pipe(htmlreplace({
+			.pipe(htmlReplace({
 				'js': 'quiet-raccoon-training.min.js'
 			}))
 
-			.pipe(htmlmin(options))
+			.pipe(htmlMinifier(options))
 
 			.pipe(gulp.dest('./dist'));
 	}
