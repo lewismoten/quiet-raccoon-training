@@ -123,11 +123,7 @@
 
 		console.log();
 	}
-
-	function registerTask(task, index) {
-		gulp.task.apply(gulp, task);
-	}
-
+	
 	function build() {
 
 	}
