@@ -8,10 +8,6 @@ install:
   - npm install -g gulp-jshint
   - npm install
   - bower install
-branches:
- 	only:
- 		- master
- 		- develop
 before_script:
   - gulp build
 script: gulp test
