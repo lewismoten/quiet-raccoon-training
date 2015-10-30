@@ -4,7 +4,14 @@ node_js:
 install:
   - unzip node_modules.zip -d node_modules
   - npm install
+ branches:
+ 	only:
+ 		- master
+ 		- develop
 before_script:
+	- npm install -g bower
   - npm install -g gulp
   - npm install -g gulp-jshint
+  - bower install
+  - gulp build
 script: gulp test
