@@ -3,15 +3,15 @@ node_js:
   - 4.2.1
 install:
   - unzip node_modules.zip -d node_modules
+  - npm install -g bower
+  - npm install -g gulp
+  - npm install -g gulp-jshint
   - npm install
- branches:
+  - bower install
+branches:
  	only:
  		- master
  		- develop
 before_script:
-	- npm install -g bower
-  - npm install -g gulp
-  - npm install -g gulp-jshint
-  - bower install
   - gulp build
 script: gulp test
