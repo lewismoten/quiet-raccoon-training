@@ -6,4 +6,5 @@ install:
   - npm install
 before_script:
   - npm install -g gulp
+  - npm install -g gulp-jshint
 script: gulp test
