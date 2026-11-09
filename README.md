@@ -1,8 +1,8 @@
-#Quiet Racoon Training
+# Quiet Raccoon Training
 
 [![Build Status](https://travis-ci.org/lewismoten/quiet-raccoon-training.svg?branch=master)](https://travis-ci.org/lewismoten/quiet-raccoon-training)
 
-During the late night hours, training excercises commense to catch up on the latest techniques, or try out new projects. This is a template for setting up a new bare-bones JavaScript project with some meaty tasks already setup.
+During the late night hours, training exercises commence to catch up on the latest techniques, or try out new projects. This is a template for setting up a new bare-bones JavaScript project with some meaty tasks already setup.
 
 1. Minification task
 1. Host as a web server
