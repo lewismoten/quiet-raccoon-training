@@ -1,3 +1,5 @@
+![quiet-raccoon-training: Raccoon training at night](docs/images/social-preview.png)
+
 # Quiet Raccoon Training
 
 [![Build Status](https://travis-ci.org/lewismoten/quiet-raccoon-training.svg?branch=master)](https://travis-ci.org/lewismoten/quiet-raccoon-training)
